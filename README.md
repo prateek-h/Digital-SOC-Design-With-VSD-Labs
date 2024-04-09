@@ -9,3 +9,5 @@ The NASSCOM-VSD SoC Design Program aimed to provide training and certification i
 
 4.Diving into and enriching the open-source EDA landscape.
 
+CREATING NEW VIRTUAL MACHINE:
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/d5d70668-1679-43c2-8c3d-82cffa880bff)
