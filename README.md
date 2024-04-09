@@ -1,4 +1,4 @@
-# Digital-SOC-Design-With-VSD-Labs
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/9b3cbb8a-ba52-48dd-8540-6600c375ba86)# Digital-SOC-Design-With-VSD-Labs
 The NASSCOM-VSD SoC Design Program aimed to provide training and certification in Digital SoC Design.Digital System-on-Chip (SOC) design is a fundamental aspect of modern electronics engineering, facilitating the integration of various digital components onto a single chip.
 ### Benefits
 1.Crafting and characterizing standard cells.
@@ -300,11 +300,56 @@ OR gate
 `help replace_cell` Check the command syntax
 `replace_cell _14510_ sky130_fd_sc_hd__or3_4` Replace the cell
 `report_checks -fields {net cap slew input_pins} -digits 4`Generate the custom timing report
+# DAY 5: Final steps for RTL2GDS using tritonRoute and openSTA
+Building power distribution network
+
+`docker
+
+./flow.tcl -interactive
+
+package require openlane 0.9
+
+prep -design picorv32a -tag 08-04_18-39
+
+echo $::env(CURRENT_DEF)`
+
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/d9fef961-7b86-4aaf-953e-e9b65a1e2f9b)
+now `run echo $::env(CURRENT_DEF)` IN OPENLANE
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/4d63ae52-955f-49ce-997a-57f1b2c9815d)
+
+#Generating pdn(power distribution network) using `gen_pdn`
+
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/8e469903-9af5-490b-a4e7-33f1d27ba238)
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/fd1c3dac-e53f-41fd-ac2d-5f602770fc5c)
 
 
 
+#Routing
 
+Running `echo $::env(CURRENT_DEF)` and  `echo $::env(ROUTING_STRATEGY)`
 
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/31077687-6516-49e6-870a-56acaf3aad1e)
+`run_routing`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/5c408ce0-43f0-407b-ad61-347396c3da7e)
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/84b2eaaf-1d4f-45c3-970e-1c629036190b)
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/a9bd7291-b977-4cb2-8a31-289f551b138b)
+
+The resulting .spef file can be located in the routing folder under the results folder.
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/c04d55c0-6c46-4d32-8074-bf5fc1874c24)
+
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/e900ae80-9711-4378-8a52-09bcfc4adffa)
+#FINAL LAYOUT
+
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/27cce971-c40c-4e89-a29c-e9d910fcac46)
+
+# REFERENCES
+1)https://github.com/google/skywater-pdk
+2)https://github.com/nickson-jose/vsdstdcelldesign
+3)https://sourceforge.net/projects/ngspice/
+4)https://github.com/
+5)https://www.vlsisystemdesign.com/wp-content/uploads/2017/07/Introduction-to-Industrial-Physical-Design-Flow.pdf
+# ACKNOWLEDGEMENT
+I would like to extend my heartfelt thanks and express my deep gratitude to Mr. Kunal Ghosh, Co-founder of VLSI System Design (VSD) Corp. Pvt. Ltd., and Mr. Nickson Jose for their exceptional guidance and presentation of the DIGITAL-VLSI-SOC-DESIGN-AND-PLANNING workshop. Their expertise and insights have been invaluable in helping me learn about physical chip design using OpenLANE software and other advanced techniques. The workshop was meticulously designed and executed, and I have gained a wealth of knowledge and new perspectives from it.
 
  
 
