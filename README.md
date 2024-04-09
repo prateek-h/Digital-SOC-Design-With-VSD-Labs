@@ -200,6 +200,66 @@ After making necessarcy changes in the skytech file
 `pdk/sky130/libs.tech /openlane/sky130_fd_sc_hd/track.info`
 ![tracks](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/16e41495-442d-4d3f-9b4f-cb7d32489d65)
 
+#Lab steps to convert magic layout to std cell LEF
+![ip and op on same grids](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/37d76245-048b-48a0-a9dd-1ffb309060af)
+![localli A](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/d624af28-1d11-439b-8c6c-09be841e1548)
+
+Now, we open this file in the magic by the command
+
+`magic -T sky130A.tech sky130_vsdinv.mag &`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/64a3a842-a205-4acf-8c75-171dfa01f7dc)
+modify the config.tcl file of picorv32a directory
+
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/f0e12069-e373-4b7a-b2f4-8baacae2b57d)
+
+Now Execute
+
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/fc335002-b505-4aa4-9aaf-21d5f0cb6ae2)
+
+`./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]      
+add_lefs -src $lefs
+run_synthesis`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/4d655f24-4262-4b2c-9883-6f3e3d0665b2)
+
+`prep -design picorv32a -tag 01-04_12-54 -overwrite
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+add_lefs -src $lefs
+
+echo $::env(SYNTH_STRATEGY)
+
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+echo $::env(SYNTH_BUFFERING)
+
+echo $::env(SYNTH_SIZING)
+
+set ::env(SYNTH_SIZING) 1
+
+echo $::env(SYNTH_DRIVING_CELL)
+
+run_synthesis
+
+prep -design picorv32a -tag 01-04_12-54 -overwrite`
+
+Solving errors
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/028df899-29d3-4530-ac4e-a21cbc54d100)
+
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/03e4a181-9e88-45d9-83bb-e838f7acad69)
+
+ run the placement using command `run_placement`
+ How placement looks
+ ![new placemnet](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/06648ac3-025e-4ff9-bee8-4a46709c743d)
+![skyvsdinv cell](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/e0e19242-f755-45dd-ae16-752e1e9bdc23)
+![expanded skyvsdinv](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/3a42552d-8086-438a-bd49-2c59356c936a)
+
+
+
+
 
 
 
