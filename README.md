@@ -257,10 +257,49 @@ Solving errors
 ![skyvsdinv cell](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/e0e19242-f755-45dd-ae16-752e1e9bdc23)
 ![expanded skyvsdinv](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/3a42552d-8086-438a-bd49-2c59356c936a)
 
+#configure OpenSTA for post-synth timing analysis
+`docker
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+set ::env(SYNTH_SIZING) 1
+run_synthesis`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/e4c5ac7e-eb95-4a2c-b7d0-a051c93af9c7)
+Make a new pre_sta.conf file.
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/2c2d0458-faa1-49ea-939e-d3a02264b9a4)
 
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/edb3fdaf-8fb0-4cc1-bae4-dde2380dd555)
+Now we will create a my_base.sdc file
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/dc82a9aa-7876-4ba6-87d3-d3ebe3c28eca)
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/cf47e3b2-694f-4d10-89e7-a4c726f5d781)
+Now run `sta pre_sta.conf`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/4b3b5ad9-758c-47c8-891c-f42961be19c7)
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/bc805112-15c3-4edd-84a2-2305ca114e32)
+Change the FANOUT parameter
+`prep -design picorv32a -tag 02-04_05-27 -overwrite
 
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
 
+add_lefs -src $lefs
 
+set ::env(SYNTH_SIZING) 1
+
+set ::env(SYNTH_MAX_FANOUT) 4
+
+echo $::env(SYNTH_DRIVING_CELL)
+
+run_synthesis`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/5c151be3-79ac-4367-a7e9-c4412228ce33)
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/1b329585-59b3-4314-a00f-b3084a1e40cb)
+
+OR gate
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/8a71db7f-33b4-4928-af40-ce5d18005ed2)
+`report_net -connections _11672_`   Reports all the connections
+`help replace_cell` Check the command syntax
+`replace_cell _14510_ sky130_fd_sc_hd__or3_4` Replace the cell
+`report_checks -fields {net cap slew input_pins} -digits 4`Generate the custom timing report
 
 
 
