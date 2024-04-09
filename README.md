@@ -152,6 +152,53 @@ Also for plotting graph using command
 ![y vs time a](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/699ea2be-1362-4e91-a7fe-f5d2457f3290)
 where value of c3 = 2fF
 
+1) Rise time = 0.459ns
+2) Fall time = 0.04ns
+3) Cell rise delay = 0.06ns
+4) Cell Fall Delay =0.028ns
+
+## DRC Corrections and rules
+We need files for DRC corrections. It is downloaded using below command
+`wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz`
+also the file is extracted using 
+`tar xfz drc_tests.tgz`
+all the files are listed using
+`ls -all`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/79540fbd-b0ce-48f0-87a8-5fd7b5c75ff1)
+
+## Lab introduction to Magic and steps to load Sky130 tech-rules
+The command `magic -d XR` was used to open the magic tool
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/dd969bfb-b7fa-4e87-bba4-1af3a2bf544d)
+The Rule were found here
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/0c810f17-4e06-46c0-a879-3c6f554fb2b6)
+After loading met3.mag using magic
+![m3mag](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/a739ed88-4dbd-4824-b55e-c5fc4c070ed8)
+
+After creating a metal3 using the paints in the right side section
+![m3mag metal contact](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/6967c06b-4e62-4907-bbae-a54d0fb62e52)
+
+Now after pressing p and executing command `cif see VIA2` we get
+![cifseevia2](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/0def1b0b-f6bc-4bf4-9a2f-c581c94d0415)
+
+#LAB exercise for poly.9 error in skytech file.
+loaded poly.mag file using magic.
+![load sky130A](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/e56330bc-0218-482f-8d3e-8cbf3725507a)
+after making changes in skytech file and opening it.
+![drc check](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/9d989cf7-9a7e-4daa-87e1-f1ae1540813b)
+
+#LAB exercise for N-well
+Selecting the design in magic.
+![nwell](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/ca0cbe57-b383-4a33-b86b-d883af2e80f7)
+After making necessarcy changes in the skytech file 
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/28fa7ff2-71b8-4b1f-b27e-b17562aaf9f3)
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/bdd5ecd3-309b-4de6-a69d-6651ebb9b929)
+![dnwell_shrink](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/a8021983-15bf-4cc9-96dd-b9b707489c74)
+![nwell_missing](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/c9b55fc8-d47c-428b-a9fb-816628d20681)
+
+# DAY 4 Pre-layout timing analysis
+#tracksinfo
+`pdk/sky130/libs.tech /openlane/sky130_fd_sc_hd/track.info`
+![tracks](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/16e41495-442d-4d3f-9b4f-cb7d32489d65)
 
 
 
