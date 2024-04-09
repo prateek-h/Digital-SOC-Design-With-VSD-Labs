@@ -95,6 +95,10 @@ Above is used to run placement tools on the given design and floorplan
 ![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/71edfeeb-0f4a-41e6-ac95-77c2f7610e0e)
 ![placement cell](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/f4edfb5e-b0c1-451c-b0ed-a4c1f41006fd)
 
+#Flow of designing circuit
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/0d9ba321-11e4-4b65-bf17-1c1b96647121)
+
+
 
 
 
