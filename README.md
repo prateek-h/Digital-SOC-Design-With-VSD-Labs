@@ -95,8 +95,64 @@ Above is used to run placement tools on the given design and floorplan
 ![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/71edfeeb-0f4a-41e6-ac95-77c2f7610e0e)
 ![placement cell](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/f4edfb5e-b0c1-451c-b0ed-a4c1f41006fd)
 
-#Flow of designing circuit
+#Flow of designing a Circuit
 ![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/0d9ba321-11e4-4b65-bf17-1c1b96647121)
+
+#Flow of designing a Layout
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/94775558-611b-4843-8bb3-5b4366e2c16c)
+
+# DAY 3: Design library cell using Magic Layout and ngspice characterization.
+#Cloning inverter from github repository
+`git clone https://github.com/nickson-jose/vsdstdcelldesign.git`
+For viewing the .mag file we use the code same as before
+`magic -d XR -T "/libs/sky130A.tech" mag sky130_inv.mag`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/37ee4008-01d9-4a82-b288-55593741cda9)
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/b5795c4e-2c58-48bd-8b8d-a4dc710d1717)
+
+#pmos
+![pmos layout](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/44eec786-e662-47c0-9f08-3529c6cdfd50)
+
+#nmos
+![nmos in layout](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/cb234c84-d797-43cf-8704-e6903f0c0d80)
+
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/c51d1050-f109-46c4-aa68-30e92dedd689)
+ modifying the above file
+ `
+  option scale=0.01u 
+include ./libs/pshort.lib
+include ./libs/nshort.lib
+//. subckt sky130_inv A Y VPWR VGND
+M1000 Y A VPWR VPWR pshort_model. 0w=37 l=23
++ ad=1443 pd=152 as=1517 ps=156
+M1001 Y A VGND VGND nshort_model. 0 w=34 l=23
++ ad=1435 pd=152 as=1365
+ps=148̦
+VDD VPWR 0 3.3V
+VSS VGND
+0 OV
+Va A VGND PULSE(OV 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+CO A Y 0.0754fF
+C1 Y VPWR 0.117fF
+C2 A VPWR 0.0774fF
+C3 Y VGND 0.279fF
+C4 A VGND 0.45fF
+// C5 VPWR VGND 0.781f
+//. ends 
+.tran 1n 20n
+.control run
+endc
+end`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/57a87d9d-75fd-439f-9934-f3b81ffff4c9)
+
+#spice 
+`ngspice sky130_inv.spice`
+![image](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/3b4fe12f-0773-441a-b068-135df38f60c1)
+Also for plotting graph using command
+`plot y vs time a`
+![y vs time a](https://github.com/prateek-h/Digital-SOC-Design-With-VSD-Labs/assets/166489309/699ea2be-1362-4e91-a7fe-f5d2457f3290)
+where value of c3 = 2fF
+
+
 
 
 
